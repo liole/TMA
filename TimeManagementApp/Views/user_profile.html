@@ -1,0 +1,44 @@
+﻿<section class="w480c inFocuse">
+    <h2>Профіль користувача</h2>
+    <div class="userProfile">
+        <div class="userSide">
+            <img ng-src="Images/UserLogos/{{user.ID}}.png" data-default-src="Images/UserLogos/default.png" class="userProfilePic">
+        </div>
+        <div class="userSide">
+            <input type="text" class="userName" ng-model="user.FullName" />
+            <span class="label userNameLabel">повне ім'я</span>
+            <input type="password" class="userPassword" ng-model="user.Password" placeholder="новий пароль" />
+            <span class="label userPasswordLabel">змінити пароль (залишити порожнім)</span>
+            <input type="password" class="userPasswordRepeat" ng-model="user.RepeatPassword" placeholder="новий пароль" />
+            <span class="label userPasswordRepeatLabel">пароль повторно</span>
+        </div>
+        <button type="button" ng-click="saveUserData()">{{ saveSuccessful ? 'ЗБЕРЕЖЕНО!' : 'ЗБЕРЕГТИ'}}</button>
+    </div>
+    <h2>Статистика</h2>
+    <table class="tagStatistics">
+        <tr class="tagTop">
+            <th class="totalTd">
+                Разом
+            </th>
+            <th class="tagHours">
+                &mdash; 
+                {{getHours(totalHours)?getHours(totalHours)+' год':''}}
+                {{getMinutes(totalHours)?getMinutes(totalHours)+' хв':''}}
+                {{getHours(totalHours)||getMinutes(totalHours)?'':'немає'}}
+            </th>
+        </tr>
+        <tr ng-repeat="tag in tagStatistics | orderBy:'-UserHours'">
+            <td class="tagTd" ng-style="{'background-color': tag.Color}">
+                <img ng-src="Images/TagIcons/{{tag.ID}}.png"
+                     onerror="this.style.display = 'none';">
+                {{tag.Text}}
+            </td>
+            <td class="tagHours">
+                &mdash;
+                {{getHours(tag.UserHours)?getHours(tag.UserHours)+' год':''}}
+                {{getMinutes(tag.UserHours)?getMinutes(tag.UserHours)+' хв':''}}
+                {{getHours(tag.UserHours)||getMinutes(tag.UserHours)?'':'немає'}}
+            </td>
+        </tr>
+    </table>
+</section>

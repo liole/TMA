@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="timeApp">
+<head>
+    <title>Time management App</title>
+    <script type="text/javascript" src="Scripts/jquery-latest.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="Images/time1.png"/>
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="media.css" />
+
+    <link href="Scripts/jquery.event.calendar.css" rel="stylesheet" />
+    <script src="Scripts/jquery.event.calendar.js"></script>
+    <script>
+        var months = ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
+	    days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'],
+	    errorMessage = 'Error loading events...';
+    </script>
+</head>
+<body ng-controller="initializeController">
+    <header class="top">
+        <h1>Облік часу<!--<sup>beta</sup>--></h1>
+        <nav class="menu">
+            <ul id="menuList">
+                <!--<li id="login"><a href="#Login/User">Вхід</a></li>-->
+            </ul>
+        </nav>
+        <div class="menuIcon" onclick="toggleMenu()"></div>
+    </header>
+    <div id="main" ng-view>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿@media screen and (max-width: 1340px) {
+    .mainFull {
+        width: 920px;
+    }
+    section.third {
+        display: none;
+    }
+    .calendarIcon {
+        display: inline-block;
+    }
+    #calendarBlock2 {
+        display: block;
+    }
+}
+@media screen and (max-width: 940px) {
+    .mainFull, .mainDouble {
+        width: 510px;
+    }
+    section.second {
+        display: none;
+    }
+    section.second.inFocuse {
+        display: inline-block;
+        width: 480px;
+    }
+    section:not(.inFocuse) {
+        display: none;
+    }
+    section.inFocuse .backToFirst {
+        display : inline-block;
+    }
+}
+@media screen and (max-width: 700px) {
+    nav.menu {
+        display: block;
+        top: 64px;
+        z-index: 1000;
+        background-color: #999999;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height ease-in-out .2s;
+    }
+    nav.menu li {
+        display: list-item;
+        height: 63px;
+        border-top: 1px solid #aaaaaa;
+    }
+    nav.menu li.selected {
+        height: 63px;
+        border-bottom: none;
+        background-color: #999999;
+    }
+    nav.menu li:hover {
+        background-color: #bbbbbb;
+        cursor: pointer;
+    }
+    nav.menu.open {
+        max-height: 256px;
+    }
+    nav.menu #menuList {
+        height: 100%;
+    }
+    nav.menu.open + .menuIcon {
+        background-color: #999999;
+    }
+    .menuIcon {
+        display: inline-block;
+    }
+}
+@media screen and (max-width: 500px) {
+    .mainFull, .mainDouble {
+        width: 100%;
+    }
+    section.w500 {
+        margin: 0px;
+        width: 100%;
+        width: calc(100% - 20px);
+    }
+    section.inFocuse {
+        margin: 0px !important;
+        width: 100% !important;
+        width: calc(100% - 20px) !important;
+    }
+}
+@media screen and (max-width: 480px) {
+    section.w480c {
+        width: 100%;
+        width: calc(100% - 20px);
+    }
+    .userProfile .userProfilePic {
+        width: 100px;
+    }
+    .userProfile input {
+        width: 200px;
+    }
+    .userProfile .label {
+        width: 210px;
+    }
+    .userProfile .userName {
+        width: 225px;
+    }
+    .userProfile .userNameLabel {
+        width: 235px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .formIcon {
+        display: none;
+    }
+    .changeLogin {
+        display: block;
+        border-left: none;
+        border-top: 1px solid #00897b;
+        padding-left: 0px;
+        margin-left: 0px;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    .changeLogin:hover {
+        /*text-shadow: 0px 0px 30px #00695c;*/
+        border-left: none;
+        border-top: 1px dashed #00897b;
+    }
+    .userProfile .userProfilePic {
+        width: 75px;
+    }
+    .userProfile input {
+        width: 100%;
+        font-size: 14pt;
+    }
+    .userProfile .label {
+        width: 100%;
+    }
+    .userProfile .userName {
+        width: 100%;
+        font-size: 16pt;
+    }
+    .userProfile .userNameLabel {
+        width: 100%;
+    }
+    .tagStatistics {
+        margin-left: 30px;
+    }
+}

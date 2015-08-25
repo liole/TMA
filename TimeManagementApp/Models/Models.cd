@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TimeManagementApp.Models.Record">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Status" Type="TimeManagementApp.Models.RecordStatus" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="3.125" />
+        <Point X="9.418" Y="3.125" />
+        <Point X="9.418" Y="1.869" />
+        <Point X="10" Y="1.869" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Tag" Type="TimeManagementApp.Models.RecordTag" FixedFromPoint="true">
+      <Path>
+        <Point X="8.5" Y="3.812" />
+        <Point X="10" Y="3.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAEQAAggAAAAAAACAgABAAgAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Record.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+      <Property Name="Tag" />
+      <Property Name="User" />
+      <Property Name="Project" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.RecordTag">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Records" Type="TimeManagementApp.Models.Record" FixedFromPoint="true">
+      <Path>
+        <Point X="10" Y="3.5" />
+        <Point X="8.5" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAiAAAAAA=</HashCode>
+      <FileName>Models\RecordTag.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Records" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.JoinUserProject">
+    <Position X="4" Y="3" Width="1.5" />
+    <AssociationLine Name="User" Type="TimeManagementApp.Models.User" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="4.488" />
+        <Point X="5" Y="5.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Project" Type="TimeManagementApp.Models.Project" FixedFromPoint="true">
+      <Path>
+        <Point X="4.938" Y="3" />
+        <Point X="4.938" Y="2.18" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAAAAAAACAgABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\JoinUserProject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Project" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.Company">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <AssociationLine Name="AuthData" Type="TimeManagementApp.Models.AuthData" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1" Y="3.875" />
+        <Point X="0.625" Y="3.875" />
+        <Point X="0.625" Y="8.042" />
+        <Point X="10.75" Y="8.042" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Employees" Type="TimeManagementApp.Models.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.688" Y="4.238" />
+        <Point X="1.688" Y="6.375" />
+        <Point X="4" Y="6.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAAAgIAAAAAAAAAACAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Company.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AuthData" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Employees" />
+      <Property Name="Projects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.Project">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Participants" Type="TimeManagementApp.Models.JoinUserProject" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="2.18" />
+        <Point X="4.5" Y="3" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAIggAAAAAAAAAQAAAAAAAAAACAABAAAAAA=</HashCode>
+      <FileName>Models\Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Company" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Participants" />
+      <Property Name="Records" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.AuthToken">
+    <Position X="9" Y="4.5" Width="1.5" />
+    <AssociationLine Name="AuthData" Type="TimeManagementApp.Models.AuthData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="6.44" />
+        <Point X="9.5" Y="7.181" />
+        <Point X="10.75" Y="7.181" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAAABAAA=</HashCode>
+      <FileName>Models\AuthToken.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AuthData" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.User">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <AssociationLine Name="AuthData" Type="TimeManagementApp.Models.AuthData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="6.875" />
+        <Point X="5.875" Y="6.875" />
+        <Point X="5.875" Y="7.611" />
+        <Point X="10.75" Y="7.611" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Projects" Type="TimeManagementApp.Models.JoinUserProject" FixedFromPoint="true">
+      <Path>
+        <Point X="4.562" Y="5.5" />
+        <Point X="4.562" Y="4.488" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Records" Type="TimeManagementApp.Models.Record" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="6.466" />
+        <Point X="7.75" Y="6.466" />
+        <Point X="7.75" Y="5.007" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAACAIAAAIAgIAAAAAAAAAAAAAAAAAAAAAABAAAAQA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AuthData" />
+      <Property Name="Company" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Projects" />
+      <Property Name="Records" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TimeManagementApp.Models.AuthData">
+    <Position X="10.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAACAQAQAAAAAAA=</HashCode>
+      <FileName>Models\AuthData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="TimeManagementApp.Models.RecordStatus">
+    <Position X="10" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\Record.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TimeManagementApp.Models.AuthType">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\AuthData.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

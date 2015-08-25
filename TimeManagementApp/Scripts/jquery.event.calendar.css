@@ -1,0 +1,146 @@
+/***** CALENDAR *****/
+.hb-calendar, .hb-calendar *{
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		 -o-box-sizing: border-box;
+			box-sizing: border-box;
+
+	-webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	   -khtml-user-select: none;
+		 -moz-user-select: none;
+		  -ms-user-select: none;
+			  user-select: none;
+}
+
+.hb-calendar{
+	height: 300px;
+	width: 300px;
+	margin: auto;
+	margin-bottom: 20px;
+	color: #666;
+	font-family: "Trebuchet MS";
+}
+
+.hb-calendar a{
+	color: inherit;
+	text-decoration: none;
+	/*transition: .2s;*/
+}
+
+
+/***** MONTHS *****/
+.hb-months{
+	position: relative;;
+	height: 60px;
+	margin-bottom: 15px;
+	text-align: center;
+	border-bottom: 1px solid #009688;
+}
+
+.hb-months:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.hb-current-month{
+	line-height: 28px;
+	font-size: 24px;
+	font-weight: 200;
+}
+
+.hb-current-month span{
+	display: block;
+	margin-top: 10px;
+	line-height: 10px;
+	font-size: 14px;
+	color: #666;
+}
+
+.hb-current-month:hover, .hb-current-month:hover span{
+	color: #009688;
+}
+
+.hb-change-month{
+	position: absolute;
+	bottom: 15px;
+	display: inline-block;
+	width: 20px;
+	height: 30px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.hb-prev-month{
+	left: 0px;
+	background-image: url("../Images/iconPrev.png");
+}
+
+.hb-next-month{
+	right: 0px;
+	background-image: url("../Images/iconNext.png");
+}
+
+
+/***** DAYS *****/
+.hb-days{
+	width: 300px;
+	height: auto;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+.hb-days:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.hb-day{
+	float: left;
+	display: inline-block;
+	width: 38px;
+	height: 26px;
+	line-height: 26px;
+	margin: 1px;
+	text-align: center;
+	border-radius: 1px;
+	font-size: 16px;
+	/*transition: .2s;*/
+}
+.hb-day:nth-child(7n+0) {
+	color: #e00;
+}
+.hb-day:nth-child(7n+6) {
+	color: #c00;
+}
+
+.hb-day.hb-day-name{
+	margin-bottom: 6px;
+	color: #009688;
+	font-size: 14px;
+}
+
+.hb-day.hb-day-active{
+	color: #fff;
+	background-color: #26a69a;
+	cursor: pointer;
+}
+
+.hb-day.hb-day-active:hover{
+	background-color: #52b6ac;
+}
+
+.hb-day.hb-day-selected, .hb-day.hb-day-selected:hover{
+	background-color: rgba(240, 255, 250, 0.5);
+    border: 1px solid #80cbc4;
+	color: #666;
+	font-weight: bold;
+	cursor: default;
+}
+
+/* LOADER */
+.hb-loading:before{ content: url("images/iconLoading.gif"); display: block; width: 100%; text-align: center; }
+.hb-error{ padding: 10px 15px; background-color: #f2dede; border: 1px solid #ebccd1; border-radius: 3px; color: #b84442; }

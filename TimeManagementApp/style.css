@@ -1,0 +1,793 @@
+﻿body {
+    background-color: #eeeeee;
+    padding: 0px;
+    margin: 0px;
+}
+body, body * {
+    font-family: 'Segoe UI Light';
+}
+header.top {
+    background-color: #009688;
+    height: 64px;
+    /*width: 100%;
+    width: calc(100% - 64px);*/
+    margin: 0px;
+    padding-left: 64px;
+    background-image: url('Images/time2.png');
+    background-repeat: no-repeat;
+    background-size: 38px;
+    background-position: 10px center;
+    box-shadow: #555555 0px 0px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 999;
+}
+header.top h1 {
+    padding: 10px;
+    margin: 0px;
+    color: #ffffff;
+    font-size: 22pt;
+    /*font-weight: normal;*/
+    display: inline-block;
+}
+header.top h1 sup {
+    font-size: 12pt;
+    margin-left: 5px;
+}
+nav.menu {
+    position: absolute;
+    margin: 0px;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+    /*height: 64px;*/
+}
+nav.menu ul {
+    margin: 0px;
+    padding: 0px;
+    height: 64px;
+}
+nav.menu li {
+    margin: 0px;
+    padding: 0px;
+    height: 64px;
+    color: #ffffff;
+    font-size: 18pt;
+    line-height: 44px;
+    display: inline-block;
+    list-style-type: none;
+}
+nav.menu li.selected {
+    height: 60px;
+    border-bottom: 4px solid #80cbc4;
+    background-color: #10a090;
+}
+nav.menu li:hover {
+    background-color: #26a69a;
+    cursor: pointer;
+}
+nav.menu li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    line-height: 64px;
+}
+.menuIcon {
+    position: absolute;
+    display: none;
+    top: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 10px;
+    height: 44px;
+    width: 44px;
+    background-image: url('Images/menu.png');
+    background-size: 44px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.menuIcon:hover {
+    background-color: #26a69a;
+    cursor: pointer;
+}
+#main {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 64px;
+    position: relative;
+}
+section {
+    background-color: #ffffff;
+    box-shadow: #555555 0px 0px 10px;
+    color: #000000;
+    padding: 10px;
+    margin-bottom: 20px !important;
+}
+section.w480c {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 460px;
+}
+section.w500c {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 480px;
+}
+.txt_input {
+    font-size: 16pt;
+    font-family: 'Segoe UI Light';
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(240, 255, 250, 0.5);
+    border: 1px solid #80cbc4;
+}
+.txt_input.small {
+    font-size: 12pt;
+    padding: 3px;
+    margin: 1px;
+    width: 150px;
+}
+.txt_input::-webkit-input-placeholder { /* WebKit browsers */ color:    #aaa;}
+.txt_input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color:    #aaa; opacity:  1;}
+.txt_input::-moz-placeholder { /* Mozilla Firefox 19+ */ color:    #aaa; opacity:  1;}
+.txt_input:-ms-input-placeholder { /* Internet Explorer 10+ */ color: #aaa;}
+
+.formIcon {
+    display: table-cell;
+    vertical-align: middle;
+}
+.formInputs {
+    display: table-cell;
+    vertical-align: middle;
+}
+.formIcon img {
+    width: 64px;
+    margin: 25px;
+}
+
+.CompanyLoginInfo, .UserLoginInfo {
+    display: none;
+    cursor: pointer;
+}
+.loginInfoLogo {
+    display: table-cell;
+    vertical-align: middle;
+}
+.loginInfoLogo img {
+    width: 48px;
+    margin: 5px;
+    float: left;
+}
+.loginInfoData {
+    display: table-cell;
+    vertical-align: middle;
+}
+.loginInfoFullName {
+    font-size: 14pt;
+}
+.loginInfoSubInfo {
+    font-size: 10pt;
+    color: #555555;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.txt_input.invalid {
+    background-color: rgba(255, 200, 200, 0.5);
+    border: 1px solid #800;
+}
+h2 {
+    margin-left: 25px;
+    color: #00897b;
+    text-align: left;
+}
+h3 {
+    margin-left: 25px;
+    color: #00897b;
+    text-align: left;
+}
+.changeLogin {
+    border-left: 1px solid #00897b;
+    padding-left: 10px;
+    margin-left: 10px;
+    color: #00897b;
+    font-size: 14pt;
+    text-decoration: none;
+    font-weight: normal;
+}
+.changeLogin:hover {
+    /*text-shadow: 0px 0px 30px #00695c;*/
+    border-left: 1px dashed #00897b;
+}
+.loginIcon {
+    height: 64px;
+    margin: 25px;
+    cursor: pointer;
+}
+.loginBtn {
+    display: inline-block;
+    margin: 10px;
+    margin-left: 75px;
+    font-size: 16pt;
+    background-image: url('Images/arrow.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    padding-right: 30px;
+    cursor: pointer;
+}
+.mainFull {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 0px;
+    width: 1320px;
+}
+.mainDouble {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 0px;
+    width: 920px;
+}
+section.w500 {
+    margin: 5px;
+    margin-top: 0px;
+    width: 480px;
+    display: inline-block;
+    vertical-align: top;
+}
+section.w390 {
+    margin: 5px;
+    margin-top: 0px;
+    width: 370px;
+    display: inline-block;
+    vertical-align: top;
+}
+.blockTooltip {
+    display: block;
+    margin: 5px 35px;
+    font-style: italic;
+    color: #555555;
+    text-align: center;
+}
+.projectRow {
+    /*display: table-row;*/
+    vertical-align: middle;
+    cursor: pointer;
+    padding-left: 5px;
+}
+.projectRow.selected {
+    background-color: rgba(0, 150, 136, 0.05);
+    border-left: 5px solid #009688;
+    padding-left: 0px;
+}
+.projectRow:hover {
+    background-color: rgba(0, 150, 136, 0.1);
+}
+.projectLogo {
+    display: table-cell;
+    vertical-align: middle;
+}
+.projectLogo img {
+    width: 48px;
+    margin: 5px;
+}
+.projectInfo {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5px;
+    width: 100%;
+}
+.projectName {
+    font-size: 16pt;
+}
+.projectDescription {
+    font-size: 12pt;
+    color: #555555;
+}
+.projectEdit {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.projectEdit.pad {
+    padding-right: 5px;
+    line-height: 10pt;
+}
+.projectEdit img {
+    width: 24px;
+    padding: 10px;
+    vertical-align: middle;
+}
+.projectEdit img:hover {
+    background-color: rgba(0, 150, 136, 0.25);
+}
+.recordRow {
+    margin: 5px;
+    padding: 5px;
+    display: block;
+}
+.recordRow .recordDate {
+    font-size: 13pt;
+    margin-left: 5px;
+}
+.recordRow .recordUser {
+    font-size: 11pt;
+    color: #555555;
+}
+.recordRow .recordTag {
+    /*float: right;*/
+    position: absolute;
+    right: 0px;
+    font-style: italic;
+    font-size: 11pt;
+    color: #555555;
+    padding: 2px 5px;
+    height: 24px;
+}
+.recordRow .recordTag img {
+    width: 20px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.recordRow .recordTime {
+    display: table-cell;
+    padding: 0px 5px;
+    vertical-align: middle;
+    border-right: 1px solid #dddddd;
+}
+.recordRow .recordTime .recordTimeBegin, .recordTimeEnd, .recordInProgress {
+    display: block;
+    font-size: 16pt;
+}
+input.recordTimeBegin:focus, input.recordTimeEnd:focus {
+    border-bottom-color: #009688;
+}
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+.recordRow .recordTime .recordInProgress {
+    color: #ff0000;
+    text-align: center;
+    animation: blink 1s steps(2, start) infinite;
+}
+.recordRow .recordDescription {
+    border-top: 1px solid #dddddd;
+    margin-top: 5px;
+    padding: 0px 5px;
+    font-size: 12pt;
+}
+.recordRow .infoLine {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    position: relative;
+}
+.userProjectRow {
+    margin: 5px;
+    padding-left: 3px;
+    display: block;
+    cursor: pointer;
+}
+.userProjectRow.selected {
+    background-color: rgba(0, 150, 136, 0.05);
+    border-left: 3px solid #009688;
+    padding-left: 0px;
+}
+.userProjectRow:hover {
+    background-color: rgba(0, 150, 136, 0.1);
+}
+.userProjectRow .userIcon {
+    display: table-cell;
+    vertical-align: middle;
+}
+.userProjectRow .userIcon img {
+    width: 40px;
+    margin: 5px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.userProjectRow .userProjectInfo {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+.userProjectRow .userName {
+    font-size: 14pt;
+    line-height: 12pt;
+}
+.userProjectRow .userInfo {
+    color: #555555;
+    font-style: italic;
+}
+.userProjectRow .userProjectHours{
+    color: #000000;
+    display: inline-block;
+    font-style: normal;
+}
+.userProjectRow .userProjectHours span.strong{
+    font-weight: bold;
+}
+.userProjectRow .userStatBtn {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.userProjectRow .userStatBtn img {
+    width: 24px;
+    padding: 10px;
+    vertical-align: middle;
+    transition: transform ease-in-out .2s;
+}
+.userProjectRow .userStatBtn img.up {
+    width: 24px;
+    padding: 10px;
+    vertical-align: middle;
+    transform: rotate(180deg);
+}
+.userProjectRow .userStatBtn img:hover {
+    background-color: rgba(0, 150, 136, 0.25);
+}
+.backToFirst {
+    width: 24px;
+    margin: 10px;
+    margin-left: 0px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
+.noRecords {
+    display: block;
+    margin: 5px 35px;
+    font-style: italic;
+    color: #ff5555;
+}
+.calendarIcon {
+    width: 36px;
+    margin: 10px;
+    margin-top: 0px;
+    float: right;
+    vertical-align: middle;
+    cursor: pointer;
+    display: none;
+}
+#calendarBlock2 {
+    display: none;
+    height: 0px;
+    overflow: hidden;
+    margin: 0px auto;
+    padding: 0px;
+    transition: height ease .2s;
+}
+#calendarBlock2.open {
+    height: 300px;
+}
+.alwaysVisible {
+    display: block !important;
+}
+.moreRecords {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(240, 255, 240, 0.5);
+    cursor: pointer;
+}
+.moreRecords:hover {
+    background-color: rgb(240, 255, 240);
+}
+input.recordTimeEnd, input.recordTimeBegin {
+    width: 60px;
+    border: 0px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+input.recordTimeBegin {
+    margin-top: 10px;
+}
+.timeDescr {
+    display: block;
+    font-size: 10pt;
+    color: #555;
+    text-align: center;
+    width: 60px;
+    margin-top: -4px;
+}
+.recordDescription textarea {
+    width: 100%;
+    height: 75px;
+    border: 0px;
+    margin: 0px;
+    font-size: 12pt;
+    margin-left: -5px;
+    padding: 0px 5px;
+    resize: vertical;
+    min-height: 50px;
+}
+.recordDate input {
+    border: 0px;
+    margin: 0px;
+    font-size: 13pt;
+    width: 80px;
+    padding: 5px;
+    margin-bottom: -5px;
+    margin-left: -5px
+}
+.recordDate input:focus {
+    border-bottom: 1px solid #009688;
+    margin-bottom: -6px;
+}
+.recordRow .recordTag.select{
+    padding-top: 5px;
+    padding-bottom: 4px;
+}
+.recordRow .recordTag select{
+    font-size: 11pt;
+    border: 0px;
+    background-color: transparent;
+    vertical-align:middle;
+}
+.recordRow button {
+    background-color: #009688;
+    border: none;
+    padding: 7px 13px;
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10pt;
+}
+.recordButtons {
+    text-align: center;
+}
+.recordRow button span {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 12pt;
+    font-family: 'Arial';
+}
+.recordRow button:hover {
+    background-color: rgba(0, 150, 136, 0.75);
+}
+button.stopRecording {
+    background-color: #009688;
+    border: none;
+    padding: 4px 10px;
+    margin: 0px;
+    margin-bottom: -5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10pt;
+}
+*:focus {
+    outline: none;
+}
+
+.userProfile {
+    display: block;
+    text-align: center;
+}
+.userProfile .userProfilePic {
+    width: 128px;
+}
+.userProfile .userSide {
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px;
+    text-align: left;
+}
+.userProfile input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16pt;
+    width: 225px;
+    padding: 0px 5px;
+}
+.userProfile .userName {
+    font-size: 20pt;
+    color: #009688;
+    width: 256px;
+}
+.userProfile .label {
+    display: block;
+    font-size: 10pt;
+    color: #555;
+    text-align: center;
+    width: 235px;
+    margin-top: -4px;
+}
+.userProfile .userNameLabel {
+    width: 266px;
+}
+.userProfile button {
+    background-color: #009688;
+    border: none;
+    padding: 7px 13px;
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12pt;
+    display: inline-block;
+}
+.userProfile button:hover {
+    background-color: rgba(0, 150, 136, 0.75);
+}
+.userProfile input.invalid {
+    background-color: rgba(255, 200, 200, 0.5);
+    border: 1px solid #800;
+}
+.tagStatistics {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+#emploeeStats {
+    text-align: center;
+}
+.emploeeStats {
+    display: inline-block;
+}
+.tagTd {
+    font-style: italic;
+    font-size: 12pt;
+    color: #555555;
+    height: 28px;
+    padding: 2px 7px;
+}
+.tagTd.vertical {
+    font-weight: normal;
+    height: 110px;
+    text-align: center;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+.tagTd.vertical .tagText {
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 28px;
+    margin-bottom: -12px;
+    margin-left: 4px;
+}
+.emploeeStats .strong {
+    font-weight: bold;
+    font-style: normal;
+}
+.tagTd img {
+    width: 24px;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.tagTd.vertical img
+{
+    margin-right: 0px;
+    margin-bottom: 3px;
+}
+.emploeeStats .tagHours {
+    padding-left: 10px;
+    font-size: 13pt;
+}
+.totalTd {
+    font-size: 14pt;
+    color: #009688;
+    text-align: right;
+}
+.tagTd.sorting {
+    border: 1px solid #009688;
+    padding: 1px 6px;
+}
+.emploeeStats .tagTop th {
+    border-bottom: 1px solid #ccc;
+}
+.userProjectTagStats {
+    height: 0px;
+    overflow: hidden;
+    text-overflow: clip;
+    transition: height ease-in-out .2s;
+}
+.emploeeStats .userStatsRow {
+    text-align: center;
+    opacity: 1;
+    transition: opacity ease-in-out .2s;
+}
+.emploeeStats .userStatsRow td {
+    padding: 3px;
+}
+.emploeeStats .emploeeName {
+    text-align: left;
+    line-height: 11pt;
+    cursor: pointer;
+    padding-left: 4px;
+}
+.emploeeStats .emploeeName.selected {
+    background-color: rgba(0, 150, 136, 0.05);
+    border-left: 3px solid #009688;
+    padding-left: 1px;
+}
+.emploeeStats .emploeeName:hover {
+    background-color: rgba(0, 150, 136, 0.1);
+}
+.emploeeStats .emploeeName img {
+    width: 30px;
+    vertical-align: middle;
+    float: left;
+    margin-right: 5px;
+}
+.emploeeStats table {
+    border-collapse: collapse;
+}
+.emploeeStats .userStatsRow .inner input {
+    vertical-align: middle;
+}
+.emploeeStats .userStatsRow .inner {
+    display: block;
+    height: 30px;
+    transition: height ease-in-out .2s;
+    overflow: hidden;
+}
+.emploeeStats .userLogin {
+    font-style: italic;
+    font-size: 10pt;
+    color: #555555;
+}
+.emploeeStats .userStatsRow.hide * {
+   padding-top: 0px;
+   padding-bottom: 0px;
+}
+.emploeeStats .userStatsRow.hide .inner {
+    height: 0px;
+}
+.emploeeStats button {
+    background-color: #009688;
+    border: none;
+    padding: 7px 13px;
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10pt;
+    width: 160px;
+}
+.emploeeStats button:hover {
+    background-color: rgba(0, 150, 136, 0.75);
+}
+
+#editEmploee h2 i {
+    color: #aaa;
+    font-weight: normal;
+}
+#editEmploee {
+    text-align: center;
+}
+#editEmploee .userProfile {
+    display: inline-block;
+}
+#editEmploee .userProfile .userProfilePic {
+    width: 86px;
+}
+#editEmploee .userProfile .userSide.left {
+    text-align: center;
+}
+#editEmploee .userProfile input {
+    width: 200px;
+}
+#editEmploee .userProfile .userName {
+    font-size: 18pt;
+    width: 200px;
+}
+#editEmploee .userProfile .label {
+    width: 220px;
+}
+#editEmploee .userProfile .userNameLabel {
+    width: 225px;
+}
+#editEmploee .userProfile .tagStatistics {
+    text-align: left;
+}

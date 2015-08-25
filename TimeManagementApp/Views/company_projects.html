@@ -1,0 +1,103 @@
+﻿<div class="mainFull">
+    <section class="w500 inFocuse first" id="projects">
+        <h2>Проекти</h2>
+        <div class="projectRow" 
+             ng-repeat="project in projects"
+             ng-class="{selected : project.ID == selected}">
+            <div class="projectLogo"
+                 ng-click="displayDetails(project.ID)">
+                <img ng-src="Images/ProjectLogos/{{project.ID}}.png"
+                     onerror="this.src = 'Images/ProjectLogos/default.png'">
+            </div>
+            <div class="projectInfo"
+                 ng-click="displayDetails(project.ID)">
+                <div class="projectName">{{project.Name}}</div>
+                <div class="projectDescription">{{project.Description}}</div>
+            </div>
+            <div class="projectEdit">
+                <img src="Images/edit.png" onclick="alert('edit');">
+            </div>
+        </div>
+    </section>
+    <section class="w390 second" id="recentActivity">
+        <h2><img class="backToFirst" src="Images/back.png" onclick="backToFirst()">
+            Остання активність
+            <img class="calendarIcon alwaysVisible" src="Images/calendar.png" onclick="toggleCalendar()">
+        </h2>
+        <div id="calendarBlock2" class="alwaysVisible"></div>
+        <span class="blockTooltip">Тут будуть відбражатись останні записи вибраного проекту</span>
+        <div class="recordRow" ng-repeat="record in records">
+            <div class="recordTime">
+                <span class="recordInProgress" ng-if="record.Status==1">now</span>
+                <span class="recordTimeEnd" ng-if="record.Status!=1">{{UTC(record.EndTime) | date:"HH:mm"}}</span>
+                <span class="recordTimeBegin">{{UTC(record.BeginTime) | date:"HH:mm"}}</span>
+            </div>
+            <div class="infoLine">
+                <span class="recordDate">{{UTC(record.BeginTime) | date:"dd.MM.yyyy"}}</span>
+                <span class="recordUser">{{record.User?record.User.FullName:duration(record.BeginTime, record.EndTime)}}</span>
+                <span class="recordTag" ng-style="{'background-color': record.Tag.Color}">
+                    {{record.Tag.Text}}
+                    <img ng-src="Images/TagIcons/{{record.Tag.ID}}.png"
+                         onerror="this.style.display = 'none';">
+                </span>
+                <div class="recordDescription">{{record.Description}}</div>
+            </div>
+        </div>
+        <div class="moreRecords" ng-click="loadMoreRecords()" ng-show="recordsFilter.moreAvialable">&#8634;&nbsp;БІЛЬШЕ</div>
+        <div ng-if="records.length == 0" class="noRecords">Немає записів за вибраний період!</div>
+    </section>
+    <section class="w390 third" id="users">
+        <h2>Користувачі</h2>
+        <span class="blockTooltip">Тут будуть відображатись користувачі, які беруть участь у вибраному проекті</span>
+        <div class="userProjectRow"
+             ng-repeat="user in users"
+             ng-class="{selected : user.ID == selectedUser}">
+            <div class="userIcon">
+                <img ng-src="Images/UserLogos/{{user.ID}}.png"
+                     data-default-src="Images/UserLogos/default.png">
+            </div>
+            <div class="userProjectInfo"
+                 ng-click="loadUserRecords(user.ID)">
+                <div class="userName">{{user.FullName}}</div>
+                <div class="userInfo">
+                    <div class="userProjectHours"><span ng-class="{strong:user.tagStatistics}">{{getHoursLZ(user.ProjectHours)}}:{{getMinutesLZ(user.ProjectHours)}}</span> год тут</div>
+                    , всього {{user.ProjectsCount}} {{caseNoun(user.ProjectsCount)}}
+                </div>
+            </div>
+            <div class="userStatBtn"
+                 ng-click="loadUserStatistics(user)">
+                <img src="Images/arrowDown.png" ng-class="{up : user.tagStatistics}">
+            </div>
+            <div class="userProjectTagStats" ng-style="{height:5+(2+28+2)*(user.tagStatistics.length)}">
+                <table class="tagStatistics">
+                    <!--
+                    <tr class="tagTop">
+                        <th class="totalTd">
+                            Цей проект
+                        </th>
+                        <th class="tagHours">
+                            &mdash;
+                            {{getHours(user.ProjectHours)?getHours(user.ProjectHours)+' год':''}}
+                            {{getMinutes(user.ProjectHours)?getMinutes(user.ProjectHours)+' хв':''}}
+                            {{getHours(user.ProjectHours)||getMinutes(user.ProjectHours)?'':'немає'}}
+                        </th>
+                    </tr>
+                    -->
+                    <tr ng-repeat="tag in user.tagStatistics | orderBy:'-UserHours'">
+                        <td class="tagTd" ng-style="{'background-color': tag.Color}">
+                            <img ng-src="Images/TagIcons/{{tag.ID}}.png"
+                                 onerror="this.style.display = 'none';">
+                            {{tag.Text}}
+                        </td>
+                        <td class="tagHours">
+                            &mdash;
+                            {{getHours(tag.UserHours)?getHours(tag.UserHours)+' год':''}}
+                            {{getMinutes(tag.UserHours)?getMinutes(tag.UserHours)+' хв':''}}
+                            {{getHours(tag.UserHours)||getMinutes(tag.UserHours)?'':'немає'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,38 @@
+﻿<section class="w480c inFocuse">
+    <h2>{{title}}<!--<a class="changeLogin" ng-href="#Auth/{{changeLink}}">{{changeTitle}}</a>--></h2>
+
+    <form id="login" ng-submit="tryLogIn()">
+        <div class="formIcon">
+            <img src="Images/lock.png" />
+        </div>
+        <div class="formInputs">
+            <div class="CompanyLoginInfo" onclick="showLoginInput(this)">
+                <div class="loginInfoLogo">
+                    <img ng-src="Images/CompanyLogos/{{preview.ID}}.png"
+                            onerror="this.src = 'Images/CompanyLogos/default.png'">
+                </div>
+                <div class="loginInfoData">
+                    <div class="loginInfoFullName">{{preview.FullName}}</div>
+                    <div class="loginInfoSubInfo">{{preview.Login}}, {{preview.EmployeesCount}} {{caseEmploee(preview.EmployeesCount)}}</div>
+                </div>
+            </div>
+            <div class="UserLoginInfo" onclick="showLoginInput(this)">
+                <div class="loginInfoLogo">
+                    <img ng-src="Images/UserLogos/{{preview.ID}}.png" class="loginInfoLogo"
+                            onerror="this.src = 'Images/UserLogos/default.png'">
+                </div>
+                <div class="loginInfoData">
+                    <div class="loginInfoFullName">{{preview.FullName}}</div>
+                    <div class="loginInfoSubInfo">{{preview.Login}}, {{preview.Company.FullName}}</div>
+                </div>
+            </div>
+            <input type="text" class="txt_input" ng-model="login" id="loginInput" ng-blur="displayInfo()" placeholder="Ім'я користувача" />
+            <input type="password" class="txt_input" ng-model="password" id="passwordInput" placeholder="Пароль" />
+            <div class="loginBtn" ng-click="tryLogIn()">ВХІД</div>
+        </div>
+        <!--
+            <img src="Images/arrow.png" class="loginIcon" ng-click="tryLogIn()"/>
+        -->
+        <input type="submit" id="submit" style="visibility:hidden"/>
+    </form>
+</section>

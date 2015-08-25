@@ -1,0 +1,121 @@
+﻿<div class="mainDouble">
+    <section class="w500 inFocuse first" id="emploeeStats">
+        <h2>Працівники</h2>
+        <div class="emploeeStats">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>
+                        <input type="text" class="txt_input small" placeholder="Пошук працівників" ng-model="search.FullName" /><br>
+                        <button type="button" ng-click="toggleHide()">{{(hideChecked)?'ПОКАЗАТИ ВСІХ':'ЛИШЕ ПОЗНАЧЕНІ'}}</button>
+                    </th>
+                    <th class="tagTd vertical"
+                        ng-class="{sorting:userSortingIndex==-2}"
+                        ng-click="toggleSorting(-2)">
+                        <span class="tagText strong">Проекти</span>
+                    </th>
+                    <th class="tagTd vertical"
+                        ng-class="{sorting:userSortingIndex==-1}"
+                        ng-click="toggleSorting(-1)">
+                        <span class="tagText strong">Разом</span>
+                    </th>
+                    <th class="tagTd vertical"
+                        ng-repeat="tag in tags"
+                        ng-style="{'background-color': tag.Color}"
+                        ng-class="{sorting:userSortingIndex==$index}"
+                        ng-click="toggleSorting($index)">
+                        <span class="tagText">{{tag.Text}}</span>
+                        <img ng-src="Images/TagIcons/{{tag.ID}}.png"
+                             onerror="this.style.display = 'none';">
+                    </th>
+                </tr>
+                <tr class="userStatsRow"
+                    ng-repeat="user in users | orderBy:userSorting():userSortingDecending | filter:search"
+                    ng-class="{hide:!user.show&&hideChecked}">
+                    <td>
+                        <span class="inner"><input type="checkbox" ng-model="user.show"></span>
+                    </td>
+                    <td class="emploeeName"
+                        ng-class="{selected:selected==user}"
+                        ng-click="selectEmploee(user)">
+                        <span class="inner">
+                            <img ng-src="Images/UserLogos/{{user.ID}}.png"
+                                 data-default-src="Images/UserLogos/default.png">
+                            {{user.FullName}}<br><span class="userLogin">{{user.Login}}</span>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="inner">{{user.ProjectsCount}}</span>
+                    </td>
+                    <td class="strong">
+                        <span class="inner">{{getHoursLZ(user.TotalHours)}}:{{getMinutesLZ(user.TotalHours)}}</span>
+                    </td>
+                    <td ng-repeat="tag in user.Tags"
+                        ng-style="{'background-color': tag.Color}">
+                        <span class="inner">{{getHoursLZ(tag.UserHours)}}:{{getMinutesLZ(tag.UserHours)}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section class="w390 second" id="editEmploee">
+        <h2><img class="backToFirst" src="Images/back.png" onclick="backToFirst()">
+            Профіль працівника 
+            <i>{{selected?'('+selected.Login+')':''}}</i>
+        </h2>
+        <span class="blockTooltip">Тут можна буде відредагувати дані вибраного працівника</span>
+        <div class="userProfile" ng-if="selected">
+            <div class="userSide left">
+                <img ng-src="Images/UserLogos/{{selected.ID}}.png" data-default-src="Images/UserLogos/default.png" class="userProfilePic">
+                <br>
+                <button type="button" ng-click="saveUserData()">{{ saveSuccessful ? 'ЗБЕРЕЖЕНО!' : 'ЗБЕРЕГТИ'}}</button>
+            </div>
+            <div class="userSide">
+                <input type="text" class="userName" ng-model="selected.FullName" />
+                <span class="label userNameLabel">повне ім'я</span>
+                <input type="password" class="userPassword" ng-model="selected.Password" placeholder="новий пароль" />
+                <span class="label userPasswordLabel">змінити пароль (залишити порожнім)</span>
+                <input type="password" class="userPasswordRepeat" ng-model="selected.RepeatPassword" placeholder="новий пароль" />
+                <span class="label userPasswordRepeatLabel">пароль повторно</span>
+            </div>
+        <h2>Статистика <i>{{selected?'('+selected.ProjectsCount+' '+caseNoun(selected.ProjectsCount)+')':''}}</i></h2>
+        <table class="tagStatistics">
+            <tr class="tagTop">
+                <th class="totalTd">
+                    Разом
+                </th>
+                <th class="tagHours">
+                    &mdash;
+                    {{getHours(selected.TotalHours)?getHours(selected.TotalHours)+' год':''}}
+                    {{getMinutes(selected.TotalHours)?getMinutes(selected.TotalHours)+' хв':''}}
+                    {{getHours(selected.TotalHours)||getMinutes(selected.TotalHours)?'':'немає'}}
+                </th>
+            </tr>
+            <tr ng-repeat="tag in selected.Tags | orderBy:'-UserHours'">
+                <td class="tagTd" ng-style="{'background-color': tag.Color}">
+                    <img ng-src="Images/TagIcons/{{tag.ID}}.png"
+                         onerror="this.style.display = 'none';">
+                    {{tag.Text}}
+                </td>
+                <td class="tagHours">
+                    &mdash;
+                    {{getHours(tag.UserHours)?getHours(tag.UserHours)+' год':''}}
+                    {{getMinutes(tag.UserHours)?getMinutes(tag.UserHours)+' хв':''}}
+                    {{getHours(tag.UserHours)||getMinutes(tag.UserHours)?'':'немає'}}
+                </td>
+            </tr>
+            <tr class="tagTop">
+                <th class="totalTd">
+                    На проект
+                </th>
+                <th class="tagHours">
+                    &mdash;
+                    {{getHours(selected.TotalHours/selected.ProjectsCount)?getHours(selected.TotalHours/selected.ProjectsCount)+' год':''}}
+                    {{getMinutes(selected.TotalHours/selected.ProjectsCount)?getMinutes(selected.TotalHours/selected.ProjectsCount)+' хв':''}}
+                    {{getHours(selected.TotalHours/selected.ProjectsCount)||getMinutes(selected.TotalHours/selected.ProjectsCount)?'':'немає'}}
+                </th>
+            </tr>
+        </table>
+        </div>
+    </section>
+</div>

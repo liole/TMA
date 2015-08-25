@@ -1,0 +1,82 @@
+﻿<div class="mainFull">
+    <section class="w500 inFocuse first" id="projects">
+        <h2>Проекти</h2>
+        <div class="projectRow"
+             ng-repeat="project in projects"
+             ng-click="displayDetails(project.ID)"
+             ng-class="{selected : project.ID == selected}">
+            <div class="projectLogo">
+                <img ng-src="Images/ProjectLogos/{{project.ID}}.png"
+                     data-default-src="Images/ProjectLogos/default.png">
+            </div>
+            <div class="projectInfo">
+                <div class="projectName">{{project.Name}}</div>
+                <div class="projectDescription">{{project.Description}}</div>
+            </div>
+            <div class="projectEdit pad">
+                {{getHours(project.UserHours)}}:{{getMinutes(project.UserHours)}} год
+            </div>
+        </div>
+    </section>
+    <section class="w390 second" id="recentActivity">
+        <h2><img class="backToFirst" src="Images/back.png" onclick="backToFirst()">
+            Записи
+            <img class="calendarIcon" src="Images/calendar.png" onclick="toggleCalendar()">
+        </h2>
+        <div id="calendarBlock2"></div>
+        <span class="blockTooltip">Тут можна буде переглянути та зробити запис до вибраного проекту</span>
+        <form class="recordRow" ng-show="selected>0" ng-submit="addRecord()">
+            <div class="recordTime">
+                
+                <input type="text" placeholder="ГГ:ХХ" class="recordTimeEnd" value="13:53" ng-model="newRecord.EndTime" 
+                       pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required title="Час завершення роботи"/>
+                <span class="timeDescr">кінець</span>
+                
+                <input type="text" placeholder="ГГ:ХХ" class="recordTimeBegin" ng-model="newRecord.BeginTime" 
+                       pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required title="Час початку роботи" />
+                <span class="timeDescr">початок</span>
+             </div>
+            <div class="infoLine">
+                <span class="recordDate"><input type="text" value="12.07.2015" ng-model="newRecord.Date" 
+                                                pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" required title="Дата запису"></span>
+                <span class="recordTag select" ng-style="{'background-color': newRecord.Tag.Color}">
+                    <img ng-src="Images/TagIcons/{{newRecord.Tag.ID}}.png" data-default-src="Images/TagIcons/default.png">
+                    <select ng-model="newRecord.Tag" ng-options="tag as tag.Text for tag in tags" data-options-color></select>
+                    
+                </span>
+                <div class="recordDescription input">
+                    <textarea placeholder="Новий запис" ng-model="newRecord.Description" title="Опис роботи"></textarea>
+                    <div class="recordButtons">
+                        <button type="submit"><span class="plusIcon">+</span>&nbsp;ДОДАТИ</button>
+                        <button type="button" ng-click="startRecord()"><span class="recordIcon">&#9679;</span>&nbsp;РОЗПОЧАТИ</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="recordRow" ng-repeat="record in records">
+            <div class="recordTime">
+                <span class="recordInProgress" ng-if="record.Status==1">now</span>
+                <span class="recordTimeEnd" ng-if="record.Status!=1">{{UTC(record.EndTime) | date:"HH:mm"}}</span>
+                <span class="recordTimeBegin">{{UTC(record.BeginTime) | date:"HH:mm"}}</span>
+            </div>
+            <div class="infoLine">
+                <span class="recordDate">{{UTC(record.BeginTime) | date:"dd.MM.yyyy"}}</span>
+                <span class="recordUser" ng-if="record.Status!=1">{{duration(record.BeginTime, record.EndTime)}}</span>
+                <button type="button" class="stopRecording" ng-click="stopRecord(record)" ng-if="record.Status==1">ЗАВЕРШИТИ</button>
+                <span class="recordTag" ng-style="{'background-color': record.Tag.Color}">
+                    {{record.Tag.Text}}
+                    <img ng-src="Images/TagIcons/{{record.Tag.ID}}.png"
+                         onerror="this.style.display = 'none';">
+                </span>
+                <div class="recordDescription">{{record.Description}}</div>
+            </div>
+        </div>
+        <div class="moreRecords" ng-click="loadMoreRecords()" ng-show="recordsFilter.moreAvialable">&#8634;&nbsp;БІЛЬШЕ</div>
+        <div ng-if="records.length == 0" class="noRecords">Немає записів за вибраний період!</div>
+    </section>
+    <section class="w390 third" id="calendar">
+        <h2>Календар</h2>
+        <span class="blockTooltip">Тут буде відображатись календар для навігації по записам</span>
+        <div id="calendarBlock"></div>
+    </section>
+</div>
